@@ -19,11 +19,5 @@ namespace TallerApis.Apis.Controllers
                 return context.Publicacion.ToList();
             }
         }
-
-
-
-
-
-
     }
 }
