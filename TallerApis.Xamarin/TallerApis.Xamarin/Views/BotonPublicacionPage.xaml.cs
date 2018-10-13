@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,30 +15,28 @@ namespace TallerApis.Xamarin.Views
 		public BotonPublicacionPage ()
 		{
 			InitializeComponent ();
-            CargarProductos();
+		}
+
+        private void Dial(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            labelNumero.Text += button.Text;
         }
 
-        private void CargarProductos()
+        private async void Llamar(object sender, EventArgs e)
         {
-            HttpClient client = new HttpClient();
-
-            client.BaseAddress = new Uri("https://mitiendaapis.azurewebsites.net");
-            var request = client.GetAsync("/api/publicacion");
-
-            if (request.IsSuccessStatusCode)
-            {
-                var responseJson = request.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<List<Producto>>(responseJson);
-                listProductos.ItemsSource = response;
-            }
-
+            string mensaje = "Llamando....." + labelNumero.Text;
+            await DisplayAlert("Generar Llamada", mensaje, "OK");
         }
 
-        private async void ProductoSeleccionado(object sender, SelectedItemChangedEventArgs e)
+        private void Limpiar(object sender, EventArgs e)
         {
-            var producto = e.SelectedItem as Producto;
-            string mensaje = string.Format("Producto : {0} - Cantidad : {1}", producto.Nombre, producto.Cantidad);
-            await DisplayAlert("Producto seleccionado", mensaje, "Ok");
+            labelNumero.Text = string.Empty;
+        }
+
+        private async void Continuar(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PublicacionPage());
         }
     }
 }
