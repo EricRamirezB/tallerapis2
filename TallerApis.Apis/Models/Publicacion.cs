@@ -35,25 +35,3 @@ namespace TallerApis.Apis.Models
     }
 }
 
-/*
-[Table("Producto")]
-public class Producto
-{
-    [Key]
-    public int Id { get; set; }
-
-    [MaxLength(50)]
-    [Required]
-    public string Nombre { get; set; }
-
-    [MaxLength(200)]
-    public string Descripcion { get; set; }
-
-    public int Cantidad { get; set; }
-
-    [MaxLength(80)]
-    [Required]
-    public string Imagen { get; set; }
-}
-}
-*/
