@@ -6,7 +6,7 @@ namespace TallerApis.Xamarin.Models
 {
     public class Publicacion
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Usuario { get; set; }
         public string Descripcion { get; set; }
         public string FechaPublicacion { get; set; }
