@@ -24,7 +24,7 @@ namespace TallerApis.Xamarin.Views
         {
             HttpClient client = new HttpClient();
 
-            client.BaseAddress = new Uri("https://192.168.1.13/MiTeindaApis");
+            client.BaseAddress = new Uri("http://192.168.1.14/MiTiendaApis");
             var request = await client.GetAsync("/api/Publicacion");
             if (request.IsSuccessStatusCode)
             {
@@ -33,13 +33,5 @@ namespace TallerApis.Xamarin.Views
                 listPublicacion.ItemsSource = response;
             }      
         }
-
-
-        //private async void PublicacionSeleccionado(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    var producto = e.SelectedItem as Publicacion;
-        //    string mensaje = string.Format("Publicacion : {0} - Cantidad : {1}", producto.Nombre, producto.Cantidad);
-        //    await DisplayAlert("Producto seleccionado", mensaje, "Ok");
-        //}
     }
 }
