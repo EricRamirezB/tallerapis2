@@ -17,23 +17,21 @@ namespace TallerApis.Xamarin.Views
 		public PublicacionPage ()
 		{
 			InitializeComponent ();
-            CargarPublicacion();
+            //CargarPublicacion();
         }
 
-        private void CargarProductos()
+        private async Task CargarProductos()
         {
             HttpClient client = new HttpClient();
 
-            client.BaseAddress = new Uri("https://mitiendaapis.azurewebsites.net");
-            var request = client.GetAsync("/api/publicacion");
-
+            client.BaseAddress = new Uri("https://192.168.1.13/MiTeindaApis");
+            var request = await client.GetAsync("/api/Publicacion");
             if (request.IsSuccessStatusCode)
             {
-                var responseJson = request.Content.ReadAsStringAsync();
+                var responseJson = await request.Content.ReadAsStringAsync();
                 var response = JsonConvert.DeserializeObject<List<Publicacion>>(responseJson);
-                listProductos.ItemsSource = response;
-            }
-
+                listPublicacion.ItemsSource = response;
+            }      
         }
 
 
